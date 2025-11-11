@@ -15,25 +15,29 @@ function App() {
 		{ title: "Pulp Fiction", genre: "Thriller" },
 	];
 
-	const genreList = [
-		"Tutti",
-		"Fantascienza",
-		"Thriller",
-		"Romantico",
-		"Azione",
-	];
+	const generateList = (list) => {
+		const set = [];
+		list.forEach((current) => {
+			if (!set.includes(current.genre)) {
+				set.push(current.genre);
+			}
+		});
+		return set;
+	};
+
+	const genreList = generateList(movieList);
 
 	const [movies, setMovies] = useState(movieList);
 
 	const [filtered, setFiltered] = useState(movieList);
-	const [genre, setGenre] = useState(genreList[0]);
+	const [genre, setGenre] = useState("");
 	const [searchInput, setSearchInput] = useState("");
 
 	useEffect(() => {
 		const filtered = movies.filter(
 			(item) =>
 				item.title.toLowerCase().includes(searchInput.toLowerCase()) &&
-				(genre === genreList[0] || item.genre === genre),
+				(genre === "" || item.genre === genre),
 		);
 
 		setFiltered(filtered);

@@ -6,8 +6,7 @@ export default function MovieForm({ genreList, movies, setMovies }) {
 
 	const handleAddMovie = (e) => {
 		e.preventDefault();
-		console.log(newMovieTitle, newMovieGenre);
-		if (newMovieTitle.length > 2) {
+		if (newMovieTitle.length > 2 && newMovieGenre !== "") {
 			const newMovie = { title: newMovieTitle, genre: newMovieGenre };
 			setMovies([newMovie, ...movies]);
 		}
@@ -29,17 +28,13 @@ export default function MovieForm({ genreList, movies, setMovies }) {
 				onChange={(e) => setNewMovieGenre(e.target.value)}
 				required
 			>
-				{genreList.map((item, index) =>
-					item === "Tutti" ? (
-						<option key={index} value={""}>
-							{"Scegli un genere:"}
-						</option>
-					) : (
-						<option key={index} value={item}>
-							{item}
-						</option>
-					),
-				)}
+				<option value={""}>Scegli un genere:</option>
+
+				{genreList.map((item, index) => (
+					<option key={index} value={item}>
+						{item}
+					</option>
+				))}
 			</select>
 			<button type="submit">Aggiungi</button>
 		</form>
