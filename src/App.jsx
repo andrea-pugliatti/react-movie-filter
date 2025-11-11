@@ -40,7 +40,12 @@ function App() {
 	const handleAddMovie = (e) => {
 		e.preventDefault();
 		console.log(newMovieTitle, newMovieGenre);
-		setMovies([{ title: newMovieTitle, genre: newMovieGenre }, ...movies]);
+		if (newMovieTitle.length > 2) {
+			const newMovie = { title: newMovieTitle, genre: newMovieGenre };
+			setMovies([newMovie, ...movies]);
+		}
+		setNewMovieTitle("");
+		setNewMovieGenre("");
 	};
 
 	return (
@@ -92,7 +97,9 @@ function App() {
 
 			<ul className="movie-list">
 				{filtered.map((item, index) => (
-					<li key={index}>{item.title}</li>
+					<li key={index}>
+						{item.title} - {item.genre}
+					</li>
 				))}
 			</ul>
 		</>
