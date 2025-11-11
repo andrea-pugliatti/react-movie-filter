@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <c> */
+import { useEffect, useState } from "react";
 
 function App() {
 	const movieList = [
