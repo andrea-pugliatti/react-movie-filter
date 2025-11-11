@@ -7,3 +7,20 @@
 body {
 	font-family: system-ui, Helvetica, Arial, sans-serif;
 }
+
+.genre-selector {
+	display: flex;
+	list-style: none;
+	padding: 1.2rem 1rem;
+	* + * {
+		margin-inline-start: 1rem;
+	}
+}
+
+.movie-list {
+	list-style: none;
+	padding: 2rem 3rem;
+	li::marker {
+		content: "👁️ ";
+	}
+}
