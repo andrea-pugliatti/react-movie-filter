@@ -19,6 +19,9 @@ function App() {
 	];
 
 	const [movies, setMovies] = useState(movieList);
+	const [newMovieTitle, setNewMovieTitle] = useState("");
+	const [newMovieGenre, setNewMovieGenre] = useState("");
+
 	const [filtered, setFiltered] = useState(movieList);
 	const [genre, setGenre] = useState(genreList[0]);
 	const [searchInput, setSearchInput] = useState("");
@@ -32,7 +35,13 @@ function App() {
 			item.title.toLowerCase().includes(searchInput.toLowerCase()),
 		);
 		setFiltered(filtered);
-	}, [genre, searchInput]);
+	}, [genre, searchInput, movies]);
+
+	const handleAddMovie = (e) => {
+		e.preventDefault();
+		console.log(newMovieTitle, newMovieGenre);
+		setMovies([{ title: newMovieTitle, genre: newMovieGenre }, ...movies]);
+	};
 
 	return (
 		<>
@@ -55,6 +64,31 @@ function App() {
 				type="text"
 				onChange={(event) => setSearchInput(event.target.value)}
 			/>
+
+			<form onSubmit={(e) => handleAddMovie(e)}>
+				<input
+					type="text"
+					value={newMovieTitle}
+					onChange={(e) => setNewMovieTitle(e.target.value)}
+				/>
+				<select
+					name="genre-selector"
+					id="genre-selector"
+					onChange={(e) => setNewMovieGenre(e.target.value)}
+					required
+				>
+					{genreList.map((item, index) =>
+						item === "Tutti" ? (
+							""
+						) : (
+							<option key={index} value={item}>
+								{item}
+							</option>
+						),
+					)}
+				</select>
+				<button type="submit">Aggiungi</button>
+			</form>
 
 			<ul className="movie-list">
 				{filtered.map((item, index) => (
