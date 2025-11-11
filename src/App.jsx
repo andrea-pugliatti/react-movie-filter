@@ -47,7 +47,7 @@ function App() {
 		<>
 			<h1>React Movies</h1>
 
-			<GenreSelector genreList={genreList} setGenre={setGenre} />
+			<GenreSelector genreList={genreList} genre={genre} setGenre={setGenre} />
 
 			<SearchInput setSearchInput={setSearchInput} />
 
