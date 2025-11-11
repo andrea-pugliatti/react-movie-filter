@@ -9,14 +9,20 @@ body {
 }
 
 label {
-	margin-inline-start: 2rem;
+	margin: 1rem;
+}
+
+#search-input {
+	padding: 0.5rem 1rem;
+	margin-top: 1rem;
+	border: 2px dashed blue;
+	border-radius: 20px;
 }
 
 #genre-selector {
-	margin: 0.2rem 1.2rem;
 	padding: 0.5rem 1rem;
-
-	border: 1px dashed blue;
+	margin-top: 1rem;
+	border: 2px dashed blue;
 	border-radius: 20px;
 }
 

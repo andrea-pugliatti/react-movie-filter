@@ -21,23 +21,22 @@ function App() {
 	const [movies, setMovies] = useState(movieList);
 	const [filtered, setFiltered] = useState(movieList);
 	const [genre, setGenre] = useState(genreList[0]);
-
-	//const [searchInput, setSearchInput] = useState("");
-	// useEffect(() => {
-	// 	console.log(searchInput);
-	// }, [searchInput]);
+	const [searchInput, setSearchInput] = useState("");
 
 	useEffect(() => {
-		const filtered = movies.filter(
+		let filtered = movies.filter(
 			(item) => genre === genreList[0] || item.genre === genre,
 		);
+
+		filtered = filtered.filter((item) =>
+			item.title.toLowerCase().includes(searchInput.toLowerCase()),
+		);
 		setFiltered(filtered);
-	}, [genre]);
+	}, [genre, searchInput]);
 
 	return (
 		<>
 			<label htmlFor="genre-selector">Scegli un genere:</label>
-
 			<select
 				name="genre-selector"
 				id="genre-selector"
@@ -50,10 +49,12 @@ function App() {
 				))}
 			</select>
 
-			{/* <input
+			<label htmlFor="search-input">Cerca:</label>
+			<input
+				id="search-input"
 				type="text"
 				onChange={(event) => setSearchInput(event.target.value)}
-			/> */}
+			/>
 
 			<ul className="movie-list">
 				{filtered.map((item, index) => (
