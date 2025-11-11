@@ -21,10 +21,12 @@ export default function MovieForm({ genreList, movies, setMovies }) {
 				type="text"
 				value={newMovieTitle}
 				onChange={(e) => setNewMovieTitle(e.target.value)}
+				required
 			/>
 			<select
 				name="genre-selector"
 				id="genre-selector"
+				value={newMovieGenre}
 				onChange={(e) => setNewMovieGenre(e.target.value)}
 				required
 			>
