@@ -50,6 +50,8 @@ function App() {
 
 	return (
 		<>
+			<h1>React Movies</h1>
+
 			<label htmlFor="genre-selector">Scegli un genere:</label>
 			<select
 				name="genre-selector"
@@ -70,8 +72,9 @@ function App() {
 				onChange={(event) => setSearchInput(event.target.value)}
 			/>
 
-			<form onSubmit={(e) => handleAddMovie(e)}>
+			<form className="new-movie-form" onSubmit={(e) => handleAddMovie(e)}>
 				<input
+					id="new-movie-input"
 					type="text"
 					value={newMovieTitle}
 					onChange={(e) => setNewMovieTitle(e.target.value)}
@@ -84,7 +87,9 @@ function App() {
 				>
 					{genreList.map((item, index) =>
 						item === "Tutti" ? (
-							""
+							<option key={index} value={""}>
+								{"Scegli un genere:"}
+							</option>
 						) : (
 							<option key={index} value={item}>
 								{item}
@@ -98,7 +103,8 @@ function App() {
 			<ul className="movie-list">
 				{filtered.map((item, index) => (
 					<li key={index}>
-						{item.title} - {item.genre}
+						<span className="movie-title">{item.title}</span>
+						<span className="movie-genre"> ({item.genre})</span>
 					</li>
 				))}
 			</ul>
