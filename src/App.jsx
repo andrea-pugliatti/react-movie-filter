@@ -40,6 +40,19 @@ function App() {
 				type="text"
 				onChange={(event) => setSearchInput(event.target.value)}
 			/> */}
+			<label for="genre">Choose a genre:</label>
+
+			<select
+				name="genre"
+				id="genre"
+				onChange={(e) => setGenre(e.target.value)}
+			>
+				{genreList.map((item, index) => (
+					<option key={index} value={item}>
+						{item}
+					</option>
+				))}
+			</select>
 
 			<ul className="genre-selector">
 				{genreList.map((item, index) => (
