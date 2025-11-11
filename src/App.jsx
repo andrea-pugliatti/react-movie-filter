@@ -36,15 +36,11 @@ function App() {
 
 	return (
 		<>
-			{/* <input
-				type="text"
-				onChange={(event) => setSearchInput(event.target.value)}
-			/> */}
-			<label for="genre">Choose a genre:</label>
+			<label htmlFor="genre-selector">Scegli un genere:</label>
 
 			<select
-				name="genre"
-				id="genre"
+				name="genre-selector"
+				id="genre-selector"
 				onChange={(e) => setGenre(e.target.value)}
 			>
 				{genreList.map((item, index) => (
@@ -54,15 +50,10 @@ function App() {
 				))}
 			</select>
 
-			<ul className="genre-selector">
-				{genreList.map((item, index) => (
-					<li key={index}>
-						<button type="button" onClick={() => setGenre(item)}>
-							{item}
-						</button>
-					</li>
-				))}
-			</ul>
+			{/* <input
+				type="text"
+				onChange={(event) => setSearchInput(event.target.value)}
+			/> */}
 
 			<ul className="movie-list">
 				{filtered.map((item, index) => (
